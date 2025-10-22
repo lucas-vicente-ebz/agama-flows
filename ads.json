@@ -15,7 +15,8 @@
         "noDirectLaunch": [],
         "configs": {
             "org.ebz.email_router": {},
-            "code": {}
+            "code": {},
+            "domain.auth.lab": {}
         },
         "name": "email-domain"
     }
