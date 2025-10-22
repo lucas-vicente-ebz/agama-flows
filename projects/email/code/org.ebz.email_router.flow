@@ -11,7 +11,7 @@ email = email
 When email.length is 0
      error = "Informe seu e-mail"
      form = RRF "email_form.ftlh" 
-valid = Call "java:org.gluu.agama.util.Regex".matches("[^@\\s]+@[^@\\s]+\\.[^@\\s]+", email) 
+valid = Call "java:org.gluu.agama.util.Regex".matches("[^@\\s]+@[^@\\s]+\\.[^@\\s]+",email)" email 
 When valid is false
      error = "E-mail inválido."
      form = RRF "email_form.ftlh" 
