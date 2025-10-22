@@ -191,7 +191,8 @@
 			"measured": {
 				"width": 170,
 				"height": 123
-			}
+			},
+			"selected": true
 		},
 		{
 			"id": "rrfNode-e85f3660-4be5-4867-ba0f-1fae3b8abc5f",
