@@ -1,0 +1,1909 @@
+{
+	"nodes": [
+		{
+			"id": "startNode-f4c31f0e-e950-4320-ae6e-41de8733983a",
+			"type": "startNode",
+			"sourcePosition": "right",
+			"position": {
+				"x": 30,
+				"y": 40
+			},
+			"deletable": false,
+			"data": {
+				"id": "startNode-f4c31f0e-e950-4320-ae6e-41de8733983a",
+				"type": "startNode",
+				"position": {
+					"x": 30,
+					"y": 40
+				},
+				"agamaData": {
+					"isTopLevelFlow": true,
+					"basepath": "",
+					"configParams": "{}",
+					"nodeIcon": "material-symbols:line-start-square",
+					"timeout": "300",
+					"inputs": "",
+					"configs": "conf.providers",
+					"displayName": "Generated Node",
+					"hasComment": true,
+					"comment": " Email-first router -> OIDC, sem tela de seleção",
+					"flowname": "org.ebz.email_router",
+					"creationDate": "22/10/2025",
+					"basePath": "web/email_form.ftlh"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 123
+			}
+		},
+		{
+			"id": "rrfNode-5d67c272-5673-401e-827c-57717773aa3a",
+			"type": "rrfNode",
+			"position": {
+				"x": 280,
+				"y": 40
+			},
+			"data": {
+				"id": "rrfNode-5d67c272-5673-401e-827c-57717773aa3a",
+				"type": "rrfNode",
+				"position": {
+					"x": 280,
+					"y": 40
+				},
+				"previousNodeId": "startNode-f4c31f0e-e950-4320-ae6e-41de8733983a",
+				"agamaData": {
+					"assignments": [],
+					"nodeIcon": "ph:globe-simple",
+					"templatePath": "email_form.ftlh",
+					"asssignedVariableName": "form",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "RRF",
+					"hasComment": true,
+					"comment": " 1) Tela para inserir e-mail",
+					"arguments": []
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 123
+			}
+		},
+		{
+			"id": "assignmentNode-12c4e568-63f3-4c90-9ad5-5ac8c1327dc7",
+			"type": "assignmentNode",
+			"position": {
+				"x": 530,
+				"y": 40
+			},
+			"data": {
+				"id": "assignmentNode-12c4e568-63f3-4c90-9ad5-5ac8c1327dc7",
+				"type": "assignmentNode",
+				"position": {
+					"x": 530,
+					"y": 40
+				},
+				"previousNodeId": "rrfNode-5d67c272-5673-401e-827c-57717773aa3a",
+				"agamaData": {
+					"assignments": [
+						{
+							"variableTypeCheck": false,
+							"assignmentExpression": "form.email",
+							"assignedVariableName": "email"
+						},
+						{
+							"variableTypeCheck": false,
+							"assignmentExpression": "email",
+							"assignedVariableName": "email"
+						}
+					],
+					"nodeIcon": "material-symbols:equal",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "ASSIGNMENT",
+					"hasComment": true,
+					"comment": " 2) Normalização e validação"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 123
+			}
+		},
+		{
+			"id": "whenNode-7f65e474-1469-4d59-9dba-530a149c1356",
+			"type": "whenNode",
+			"position": {
+				"x": 780,
+				"y": 110
+			},
+			"data": {
+				"id": "whenNode-7f65e474-1469-4d59-9dba-530a149c1356",
+				"type": "whenNode",
+				"position": {
+					"x": 780,
+					"y": 110
+				},
+				"previousNodeId": "assignmentNode-12c4e568-63f3-4c90-9ad5-5ac8c1327dc7",
+				"agamaData": {
+					"variableField": "",
+					"valueField": "",
+					"conditionInputField": "",
+					"conditions": [
+						{
+							"variable": "email.length",
+							"operator": "is",
+							"dataValue": "0",
+							"combinator": "none"
+						}
+					],
+					"nodeIcon": "ph:swap",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "WHEN",
+					"hasComment": false,
+					"comment": ""
+				}
+			},
+			"measured": {
+				"width": 110,
+				"height": 60
+			}
+		},
+		{
+			"id": "assignmentNode-58944694-c6a6-4be9-b3d1-2b3d79f77a5b",
+			"type": "assignmentNode",
+			"position": {
+				"x": 1030,
+				"y": 310
+			},
+			"data": {
+				"id": "assignmentNode-58944694-c6a6-4be9-b3d1-2b3d79f77a5b",
+				"type": "assignmentNode",
+				"position": {
+					"x": 1030,
+					"y": 310
+				},
+				"previousNodeId": "whenNode-7f65e474-1469-4d59-9dba-530a149c1356",
+				"branching": "success",
+				"agamaData": {
+					"assignments": [
+						{
+							"variableTypeCheck": true,
+							"assignmentExpression": "Informe seu e-mail.",
+							"assignedVariableName": "error"
+						}
+					],
+					"nodeIcon": "material-symbols:equal",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "ASSIGNMENT",
+					"hasComment": false,
+					"comment": "",
+					"previousNodeId": "whenNode-7f65e474-1469-4d59-9dba-530a149c1356"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 123
+			},
+			"selected": true
+		},
+		{
+			"id": "rrfNode-e85f3660-4be5-4867-ba0f-1fae3b8abc5f",
+			"type": "rrfNode",
+			"position": {
+				"x": 1280,
+				"y": 310
+			},
+			"data": {
+				"id": "rrfNode-e85f3660-4be5-4867-ba0f-1fae3b8abc5f",
+				"type": "rrfNode",
+				"position": {
+					"x": 1280,
+					"y": 310
+				},
+				"previousNodeId": "assignmentNode-58944694-c6a6-4be9-b3d1-2b3d79f77a5b",
+				"agamaData": {
+					"assignments": [],
+					"nodeIcon": "ph:globe-simple",
+					"templatePath": "email_form.ftlh",
+					"asssignedVariableName": "form",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "RRF",
+					"hasComment": false,
+					"comment": "",
+					"arguments": []
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 123
+			}
+		},
+		{
+			"id": "callNode-7b53ead1-071e-45dd-ac6c-18f68c7f41c9",
+			"type": "callNode",
+			"position": {
+				"x": 1030,
+				"y": 40
+			},
+			"data": {
+				"id": "callNode-7b53ead1-071e-45dd-ac6c-18f68c7f41c9",
+				"type": "callNode",
+				"position": {
+					"x": 1030,
+					"y": 40
+				},
+				"previousNodeId": "whenNode-7f65e474-1469-4d59-9dba-530a149c1356",
+				"branching": "continue",
+				"agamaData": {
+					"javaClassName": "",
+					"javaMethodName": "email)",
+					"javaVariableName": "\"java:org.gluu.agama.util.Regex\".matches(\"[^@\\\\s]+@[^@\\\\s]+\\\\.[^@\\\\s]+\",",
+					"exceptionVariableField": "",
+					"callType": "Call method on instance",
+					"arguments": [],
+					"nodeIcon": "material-symbols:code",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "CALL",
+					"hasComment": false,
+					"comment": "",
+					"previousNodeId": "whenNode-7f65e474-1469-4d59-9dba-530a149c1356",
+					"asssignedVariableName": "valid"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 123
+			}
+		},
+		{
+			"id": "whenNode-cc2769ba-6603-4988-8ef4-48210235276a",
+			"type": "whenNode",
+			"position": {
+				"x": 1280,
+				"y": 110
+			},
+			"data": {
+				"id": "whenNode-cc2769ba-6603-4988-8ef4-48210235276a",
+				"type": "whenNode",
+				"position": {
+					"x": 1280,
+					"y": 110
+				},
+				"previousNodeId": "callNode-7b53ead1-071e-45dd-ac6c-18f68c7f41c9",
+				"agamaData": {
+					"variableField": "",
+					"valueField": "",
+					"conditionInputField": "",
+					"conditions": [
+						{
+							"variable": "valid",
+							"operator": "is",
+							"dataValue": "false",
+							"combinator": "none"
+						}
+					],
+					"nodeIcon": "ph:swap",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "WHEN",
+					"hasComment": false,
+					"comment": ""
+				}
+			},
+			"measured": {
+				"width": 110,
+				"height": 60
+			}
+		},
+		{
+			"id": "assignmentNode-c998240e-0c72-49c8-9809-d4fc8ce775f4",
+			"type": "assignmentNode",
+			"position": {
+				"x": 1530,
+				"y": 310
+			},
+			"data": {
+				"id": "assignmentNode-c998240e-0c72-49c8-9809-d4fc8ce775f4",
+				"type": "assignmentNode",
+				"position": {
+					"x": 1530,
+					"y": 310
+				},
+				"previousNodeId": "whenNode-cc2769ba-6603-4988-8ef4-48210235276a",
+				"branching": "success",
+				"agamaData": {
+					"assignments": [
+						{
+							"variableTypeCheck": true,
+							"assignmentExpression": "E-mail inválido.",
+							"assignedVariableName": "error"
+						}
+					],
+					"nodeIcon": "material-symbols:equal",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "ASSIGNMENT",
+					"hasComment": false,
+					"comment": "",
+					"previousNodeId": "whenNode-cc2769ba-6603-4988-8ef4-48210235276a"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 123
+			}
+		},
+		{
+			"id": "rrfNode-4d6adfbb-8af5-4ca9-9abb-c98c8eab4211",
+			"type": "rrfNode",
+			"position": {
+				"x": 1780,
+				"y": 310
+			},
+			"data": {
+				"id": "rrfNode-4d6adfbb-8af5-4ca9-9abb-c98c8eab4211",
+				"type": "rrfNode",
+				"position": {
+					"x": 1780,
+					"y": 310
+				},
+				"previousNodeId": "assignmentNode-c998240e-0c72-49c8-9809-d4fc8ce775f4",
+				"agamaData": {
+					"assignments": [],
+					"nodeIcon": "ph:globe-simple",
+					"templatePath": "email_form.ftlh",
+					"asssignedVariableName": "form",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "RRF",
+					"hasComment": false,
+					"comment": "",
+					"arguments": []
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 123
+			}
+		},
+		{
+			"id": "assignmentNode-c44ea3b9-4a2a-416a-aabf-f9a1652ae45b",
+			"type": "assignmentNode",
+			"position": {
+				"x": 1530,
+				"y": 40
+			},
+			"data": {
+				"id": "assignmentNode-c44ea3b9-4a2a-416a-aabf-f9a1652ae45b",
+				"type": "assignmentNode",
+				"position": {
+					"x": 1530,
+					"y": 40
+				},
+				"previousNodeId": "whenNode-cc2769ba-6603-4988-8ef4-48210235276a",
+				"branching": "continue",
+				"agamaData": {
+					"assignments": [
+						{
+							"variableTypeCheck": false,
+							"assignmentExpression": "email.indexOf(\"@\")",
+							"assignedVariableName": "at"
+						},
+						{
+							"variableTypeCheck": false,
+							"assignmentExpression": "email.substring(at + 1)",
+							"assignedVariableName": "domain"
+						},
+						{
+							"variableTypeCheck": false,
+							"assignmentExpression": "domain.toLowerCase()",
+							"assignedVariableName": "domain"
+						}
+					],
+					"nodeIcon": "material-symbols:equal",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "ASSIGNMENT",
+					"hasComment": true,
+					"comment": " 3) Extrai domínio e trata subdomínio (opcional)",
+					"previousNodeId": "whenNode-cc2769ba-6603-4988-8ef4-48210235276a"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 123
+			}
+		},
+		{
+			"id": "whenNode-1540c7fb-5599-4274-952c-7f8138ecde68",
+			"type": "whenNode",
+			"position": {
+				"x": 1780,
+				"y": 110
+			},
+			"data": {
+				"id": "whenNode-1540c7fb-5599-4274-952c-7f8138ecde68",
+				"type": "whenNode",
+				"position": {
+					"x": 1780,
+					"y": 110
+				},
+				"previousNodeId": "assignmentNode-c44ea3b9-4a2a-416a-aabf-f9a1652ae45b",
+				"agamaData": {
+					"variableField": "",
+					"valueField": "",
+					"conditionInputField": "",
+					"conditions": [
+						{
+							"variable": "conf.stripSubdomain",
+							"operator": "is",
+							"dataValue": "true",
+							"combinator": "none"
+						}
+					],
+					"nodeIcon": "ph:swap",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "WHEN",
+					"hasComment": false,
+					"comment": ""
+				}
+			},
+			"measured": {
+				"width": 110,
+				"height": 60
+			}
+		},
+		{
+			"id": "callNode-4ec92348-00fb-4a96-8975-f8266e577baa",
+			"type": "callNode",
+			"position": {
+				"x": 2030,
+				"y": 310
+			},
+			"data": {
+				"id": "callNode-4ec92348-00fb-4a96-8975-f8266e577baa",
+				"type": "callNode",
+				"position": {
+					"x": 2030,
+					"y": 310
+				},
+				"previousNodeId": "whenNode-1540c7fb-5599-4274-952c-7f8138ecde68",
+				"branching": "success",
+				"agamaData": {
+					"javaClassName": "",
+					"javaMethodName": "\"\\\\.\")",
+					"javaVariableName": "\"java:org.gluu.agama.util.Strings\".split(domain,",
+					"exceptionVariableField": "",
+					"callType": "Call method on instance",
+					"arguments": [],
+					"nodeIcon": "material-symbols:code",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "CALL",
+					"hasComment": false,
+					"comment": "",
+					"previousNodeId": "whenNode-1540c7fb-5599-4274-952c-7f8138ecde68",
+					"asssignedVariableName": "parts"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 123
+			}
+		},
+		{
+			"id": "whenNode-d4d423c3-b63d-41b9-84ec-71e8939bed5f",
+			"type": "whenNode",
+			"position": {
+				"x": 2280,
+				"y": 380
+			},
+			"data": {
+				"id": "whenNode-d4d423c3-b63d-41b9-84ec-71e8939bed5f",
+				"type": "whenNode",
+				"position": {
+					"x": 2280,
+					"y": 380
+				},
+				"previousNodeId": "callNode-4ec92348-00fb-4a96-8975-f8266e577baa",
+				"agamaData": {
+					"variableField": "",
+					"valueField": "",
+					"conditionInputField": "",
+					"conditions": [
+						{
+							"variable": "parts.length",
+							"operator": "is",
+							"dataValue": "2",
+							"combinator": "none"
+						}
+					],
+					"nodeIcon": "ph:swap",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "WHEN",
+					"hasComment": false,
+					"comment": ""
+				}
+			},
+			"measured": {
+				"width": 110,
+				"height": 60
+			}
+		},
+		{
+			"id": "assignmentNode-c6f6ba9d-6b69-47e9-a6da-87d3428c71c2",
+			"type": "assignmentNode",
+			"position": {
+				"x": 2530,
+				"y": 580
+			},
+			"data": {
+				"id": "assignmentNode-c6f6ba9d-6b69-47e9-a6da-87d3428c71c2",
+				"type": "assignmentNode",
+				"position": {
+					"x": 2530,
+					"y": 580
+				},
+				"previousNodeId": "whenNode-d4d423c3-b63d-41b9-84ec-71e8939bed5f",
+				"branching": "success",
+				"agamaData": {
+					"assignments": [
+						{
+							"variableTypeCheck": false,
+							"assignmentExpression": "parts[parts.length - 2] + \".\" + parts[parts.length - 1]",
+							"assignedVariableName": "domain"
+						},
+						{
+							"variableTypeCheck": false,
+							"assignmentExpression": "conf.routes[domain]",
+							"assignedVariableName": "provider"
+						}
+					],
+					"nodeIcon": "material-symbols:equal",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "ASSIGNMENT",
+					"hasComment": false,
+					"comment": "",
+					"previousNodeId": "whenNode-d4d423c3-b63d-41b9-84ec-71e8939bed5f"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 123
+			}
+		},
+		{
+			"id": "whenNode-1a39c244-3f7b-4458-bbca-8ef914625844",
+			"type": "whenNode",
+			"position": {
+				"x": 2030,
+				"y": 40
+			},
+			"data": {
+				"id": "whenNode-1a39c244-3f7b-4458-bbca-8ef914625844",
+				"type": "whenNode",
+				"position": {
+					"x": 2030,
+					"y": 40
+				},
+				"previousNodeId": "whenNode-1540c7fb-5599-4274-952c-7f8138ecde68",
+				"branching": "continue",
+				"agamaData": {
+					"variableField": "",
+					"valueField": "",
+					"conditionInputField": "",
+					"conditions": [
+						{
+							"variable": "provider",
+							"operator": "is",
+							"dataValue": "null",
+							"combinator": "none"
+						}
+					],
+					"nodeIcon": "ph:swap",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "WHEN",
+					"hasComment": true,
+					"comment": " 4) Resolve provider (mapa -> default -> pass-through) e recupera settings",
+					"previousNodeId": "whenNode-1540c7fb-5599-4274-952c-7f8138ecde68"
+				}
+			},
+			"measured": {
+				"width": 110,
+				"height": 60
+			}
+		},
+		{
+			"id": "assignmentNode-91dc1703-b917-4be8-a248-1544d8df5982",
+			"type": "assignmentNode",
+			"position": {
+				"x": 2280,
+				"y": 240
+			},
+			"data": {
+				"id": "assignmentNode-91dc1703-b917-4be8-a248-1544d8df5982",
+				"type": "assignmentNode",
+				"position": {
+					"x": 2280,
+					"y": 240
+				},
+				"previousNodeId": "whenNode-1a39c244-3f7b-4458-bbca-8ef914625844",
+				"branching": "success",
+				"agamaData": {
+					"assignments": [
+						{
+							"variableTypeCheck": false,
+							"assignmentExpression": "conf.routes[\"default\"]",
+							"assignedVariableName": "provider"
+						}
+					],
+					"nodeIcon": "material-symbols:equal",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "ASSIGNMENT",
+					"hasComment": false,
+					"comment": "",
+					"previousNodeId": "whenNode-1a39c244-3f7b-4458-bbca-8ef914625844"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 123
+			}
+		},
+		{
+			"id": "whenNode-b4e7a67f-21f1-4b5d-9a03-7d0194d9ec0f",
+			"type": "whenNode",
+			"position": {
+				"x": 2280,
+				"y": -30
+			},
+			"data": {
+				"id": "whenNode-b4e7a67f-21f1-4b5d-9a03-7d0194d9ec0f",
+				"type": "whenNode",
+				"position": {
+					"x": 2280,
+					"y": -30
+				},
+				"previousNodeId": "whenNode-1a39c244-3f7b-4458-bbca-8ef914625844",
+				"branching": "continue",
+				"agamaData": {
+					"variableField": "",
+					"valueField": "",
+					"conditionInputField": "",
+					"conditions": [],
+					"nodeIcon": "ph:swap",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "WHEN",
+					"hasComment": false,
+					"comment": "",
+					"previousNodeId": "whenNode-1a39c244-3f7b-4458-bbca-8ef914625844"
+				}
+			},
+			"measured": {
+				"width": 110,
+				"height": 60
+			}
+		},
+		{
+			"id": "assignmentNode-a02e39eb-1333-4ae1-9b11-6e1afbbd7415",
+			"type": "assignmentNode",
+			"position": {
+				"x": 2530,
+				"y": 170
+			},
+			"data": {
+				"id": "assignmentNode-a02e39eb-1333-4ae1-9b11-6e1afbbd7415",
+				"type": "assignmentNode",
+				"position": {
+					"x": 2530,
+					"y": 170
+				},
+				"previousNodeId": "whenNode-b4e7a67f-21f1-4b5d-9a03-7d0194d9ec0f",
+				"branching": "success",
+				"agamaData": {
+					"assignments": [
+						{
+							"variableTypeCheck": false,
+							"assignmentExpression": "domain",
+							"assignedVariableName": "provider"
+						},
+						{
+							"variableTypeCheck": false,
+							"assignmentExpression": "conf.providers.$provider",
+							"assignedVariableName": "opSettings"
+						}
+					],
+					"nodeIcon": "material-symbols:equal",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "ASSIGNMENT",
+					"hasComment": false,
+					"comment": "",
+					"previousNodeId": "whenNode-b4e7a67f-21f1-4b5d-9a03-7d0194d9ec0f"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 123
+			}
+		},
+		{
+			"id": "whenNode-93e30395-9482-415e-89c4-7a1a03075400",
+			"type": "whenNode",
+			"position": {
+				"x": 2530,
+				"y": -100
+			},
+			"data": {
+				"id": "whenNode-93e30395-9482-415e-89c4-7a1a03075400",
+				"type": "whenNode",
+				"position": {
+					"x": 2530,
+					"y": -100
+				},
+				"previousNodeId": "whenNode-b4e7a67f-21f1-4b5d-9a03-7d0194d9ec0f",
+				"branching": "continue",
+				"agamaData": {
+					"variableField": "",
+					"valueField": "",
+					"conditionInputField": "",
+					"conditions": [
+						{
+							"variable": "opSettings",
+							"operator": "is",
+							"dataValue": "null",
+							"combinator": "none"
+						}
+					],
+					"nodeIcon": "ph:swap",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "WHEN",
+					"hasComment": false,
+					"comment": "",
+					"previousNodeId": "whenNode-b4e7a67f-21f1-4b5d-9a03-7d0194d9ec0f"
+				}
+			},
+			"measured": {
+				"width": 110,
+				"height": 60
+			}
+		},
+		{
+			"id": "assignmentNode-dbbe21bb-1fe7-4f07-84be-7d1592eb3552",
+			"type": "assignmentNode",
+			"position": {
+				"x": 2780,
+				"y": 100
+			},
+			"data": {
+				"id": "assignmentNode-dbbe21bb-1fe7-4f07-84be-7d1592eb3552",
+				"type": "assignmentNode",
+				"position": {
+					"x": 2780,
+					"y": 100
+				},
+				"previousNodeId": "whenNode-93e30395-9482-415e-89c4-7a1a03075400",
+				"branching": "success",
+				"agamaData": {
+					"assignments": [
+						{
+							"variableTypeCheck": true,
+							"assignmentExpression": "Não há configuração de provider para \\\"\" + provider + \"\\\".",
+							"assignedVariableName": "error"
+						}
+					],
+					"nodeIcon": "material-symbols:equal",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "ASSIGNMENT",
+					"hasComment": false,
+					"comment": "",
+					"previousNodeId": "whenNode-93e30395-9482-415e-89c4-7a1a03075400"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 123
+			}
+		},
+		{
+			"id": "rrfNode-906dff35-3323-4941-af0e-ae47d2da7e85",
+			"type": "rrfNode",
+			"position": {
+				"x": 3030,
+				"y": 100
+			},
+			"data": {
+				"id": "rrfNode-906dff35-3323-4941-af0e-ae47d2da7e85",
+				"type": "rrfNode",
+				"position": {
+					"x": 3030,
+					"y": 100
+				},
+				"previousNodeId": "assignmentNode-dbbe21bb-1fe7-4f07-84be-7d1592eb3552",
+				"agamaData": {
+					"assignments": [],
+					"nodeIcon": "ph:globe-simple",
+					"templatePath": "email_form.ftlh",
+					"asssignedVariableName": "form",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "RRF",
+					"hasComment": false,
+					"comment": "",
+					"arguments": []
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 123
+			}
+		},
+		{
+			"id": "logNode-9451b324-72b8-489f-83d3-8c4533f2756b",
+			"type": "logNode",
+			"position": {
+				"x": 2780,
+				"y": -170
+			},
+			"data": {
+				"id": "logNode-9451b324-72b8-489f-83d3-8c4533f2756b",
+				"type": "logNode",
+				"position": {
+					"x": 2780,
+					"y": -170
+				},
+				"previousNodeId": "whenNode-93e30395-9482-415e-89c4-7a1a03075400",
+				"branching": "continue",
+				"agamaData": {
+					"logMessage": "\"Roteando domínio \" domain \" para provider \" provider",
+					"logLevel": "info",
+					"nodeIcon": "octicon:log-16",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "LOG",
+					"hasComment": false,
+					"comment": "",
+					"previousNodeId": "whenNode-93e30395-9482-415e-89c4-7a1a03075400"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 123
+			}
+		},
+		{
+			"id": "assignmentNode-378fe34d-2e5e-4bbf-b8f8-a3890d47409d",
+			"type": "assignmentNode",
+			"position": {
+				"x": 3030,
+				"y": -170
+			},
+			"data": {
+				"id": "assignmentNode-378fe34d-2e5e-4bbf-b8f8-a3890d47409d",
+				"type": "assignmentNode",
+				"position": {
+					"x": 3030,
+					"y": -170
+				},
+				"previousNodeId": "logNode-9451b324-72b8-489f-83d3-8c4533f2756b",
+				"agamaData": {
+					"assignments": [
+						{
+							"variableTypeCheck": false,
+							"assignmentExpression": "{}",
+							"assignedVariableName": "temp"
+						}
+					],
+					"nodeIcon": "material-symbols:equal",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "ASSIGNMENT",
+					"hasComment": true,
+					"comment": " 5) (Opcional) DCR igual ao openid"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 123
+			}
+		},
+		{
+			"id": "whenNode-b6e3742f-a55e-4289-9414-db476eee63f6",
+			"type": "whenNode",
+			"position": {
+				"x": 3280,
+				"y": -100
+			},
+			"data": {
+				"id": "whenNode-b6e3742f-a55e-4289-9414-db476eee63f6",
+				"type": "whenNode",
+				"position": {
+					"x": 3280,
+					"y": -100
+				},
+				"previousNodeId": "assignmentNode-378fe34d-2e5e-4bbf-b8f8-a3890d47409d",
+				"agamaData": {
+					"variableField": "",
+					"valueField": "",
+					"conditionInputField": "",
+					"conditions": [],
+					"nodeIcon": "ph:swap",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "WHEN",
+					"hasComment": false,
+					"comment": ""
+				}
+			},
+			"measured": {
+				"width": 110,
+				"height": 60
+			}
+		},
+		{
+			"id": "callNode-679677c2-43e9-4cd1-81ec-2e334697f27a",
+			"type": "callNode",
+			"position": {
+				"x": 3530,
+				"y": 100
+			},
+			"data": {
+				"id": "callNode-679677c2-43e9-4cd1-81ec-2e334697f27a",
+				"type": "callNode",
+				"position": {
+					"x": 3530,
+					"y": 100
+				},
+				"previousNodeId": "whenNode-b6e3742f-a55e-4289-9414-db476eee63f6",
+				"branching": "success",
+				"agamaData": {
+					"javaClassName": "org.gluu.inbound.oauth2.DCRUtil",
+					"javaMethodName": "registerClient",
+					"javaVariableName": "",
+					"exceptionVariableField": "",
+					"callType": "Call static method",
+					"arguments": [
+						"opSettings.host",
+						"opSettings.dcr.useCachedClient",
+						"opSettings.oauth.redirectUri",
+						"opSettings.oauth.scopes"
+					],
+					"nodeIcon": "material-symbols:code",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "CALL",
+					"hasComment": false,
+					"comment": "",
+					"previousNodeId": "whenNode-b6e3742f-a55e-4289-9414-db476eee63f6",
+					"asssignedVariableName": "temp"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 123
+			}
+		},
+		{
+			"id": "callNode-4019bebc-1e09-43fd-aea2-ed3986e30e57",
+			"type": "callNode",
+			"position": {
+				"x": 3530,
+				"y": -170
+			},
+			"data": {
+				"id": "callNode-4019bebc-1e09-43fd-aea2-ed3986e30e57",
+				"type": "callNode",
+				"position": {
+					"x": 3530,
+					"y": -170
+				},
+				"previousNodeId": "whenNode-b6e3742f-a55e-4289-9414-db476eee63f6",
+				"branching": "continue",
+				"agamaData": {
+					"javaClassName": "org.gluu.inbound.oauth2.OAuthParams",
+					"javaMethodName": "update",
+					"javaVariableName": "",
+					"exceptionVariableField": "",
+					"callType": "Call static method",
+					"arguments": [
+						"opSettings.oauth",
+						"temp",
+						"opSettings.acrValues"
+					],
+					"nodeIcon": "material-symbols:code",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "CALL",
+					"hasComment": true,
+					"comment": " 6) Completa clientId/secret/redirectUri/scopes/acrValues como o openid faz",
+					"previousNodeId": "whenNode-b6e3742f-a55e-4289-9414-db476eee63f6",
+					"asssignedVariableName": "opSettings.oauth"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 123
+			}
+		},
+		{
+			"id": "triggerNode-33fca848-bcc7-4c91-abca-841f7585b54f",
+			"type": "triggerNode",
+			"position": {
+				"x": 3780,
+				"y": -170
+			},
+			"data": {
+				"id": "triggerNode-33fca848-bcc7-4c91-abca-841f7585b54f",
+				"type": "triggerNode",
+				"position": {
+					"x": 3780,
+					"y": -170
+				},
+				"previousNodeId": "callNode-4019bebc-1e09-43fd-aea2-ed3986e30e57",
+				"agamaData": {
+					"nodeIcon": "fluent-mdl2:trigger-approval",
+					"flowFileName": "org.gluu.inbound.oauth2.AuthzCodeWithUserInfo",
+					"arguments": [
+						"opSettings.oauth"
+					],
+					"asssignedVariableName": "outcome",
+					"exceptionVariableField": "",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "TRIGGER",
+					"hasComment": true,
+					"comment": " 7) Dispara o utilitário que faz authz code + userinfo"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 123
+			}
+		},
+		{
+			"id": "whenNode-12ae0367-d601-4200-b8f4-1d68d3fce633",
+			"type": "whenNode",
+			"position": {
+				"x": 4030,
+				"y": -100
+			},
+			"data": {
+				"id": "whenNode-12ae0367-d601-4200-b8f4-1d68d3fce633",
+				"type": "whenNode",
+				"position": {
+					"x": 4030,
+					"y": -100
+				},
+				"previousNodeId": "triggerNode-33fca848-bcc7-4c91-abca-841f7585b54f",
+				"agamaData": {
+					"variableField": "",
+					"valueField": "",
+					"conditionInputField": "",
+					"conditions": [
+						{
+							"variable": "outcome.success",
+							"operator": "is",
+							"dataValue": "true",
+							"combinator": "none"
+						}
+					],
+					"nodeIcon": "ph:swap",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "WHEN",
+					"hasComment": false,
+					"comment": ""
+				}
+			},
+			"measured": {
+				"width": 110,
+				"height": 60
+			}
+		},
+		{
+			"id": "assignmentNode-702f0521-c0c8-4699-9bd2-d0984bb80e0c",
+			"type": "assignmentNode",
+			"position": {
+				"x": 4280,
+				"y": 100
+			},
+			"data": {
+				"id": "assignmentNode-702f0521-c0c8-4699-9bd2-d0984bb80e0c",
+				"type": "assignmentNode",
+				"position": {
+					"x": 4280,
+					"y": 100
+				},
+				"previousNodeId": "whenNode-12ae0367-d601-4200-b8f4-1d68d3fce633",
+				"branching": "success",
+				"agamaData": {
+					"assignments": [
+						{
+							"variableTypeCheck": false,
+							"assignmentExpression": "outcome.data.profile",
+							"assignedVariableName": "profile"
+						}
+					],
+					"nodeIcon": "material-symbols:equal",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "ASSIGNMENT",
+					"hasComment": false,
+					"comment": "",
+					"previousNodeId": "whenNode-12ae0367-d601-4200-b8f4-1d68d3fce633"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 123
+			}
+		},
+		{
+			"id": "callNode-c9db0d42-8c20-47e7-a3cf-8820cd80b279",
+			"type": "callNode",
+			"position": {
+				"x": 4530,
+				"y": 100
+			},
+			"data": {
+				"id": "callNode-c9db0d42-8c20-47e7-a3cf-8820cd80b279",
+				"type": "callNode",
+				"position": {
+					"x": 4530,
+					"y": 100
+				},
+				"previousNodeId": "assignmentNode-702f0521-c0c8-4699-9bd2-d0984bb80e0c",
+				"agamaData": {
+					"javaClassName": "org.gluu.inbound.UserOnboardHelper",
+					"javaMethodName": "exec",
+					"javaVariableName": "",
+					"exceptionVariableField": "",
+					"callType": "Call static method",
+					"arguments": [
+						"opSettings.provision.uidPrefix",
+						"opSettings.provision.attribute",
+						"profile"
+					],
+					"nodeIcon": "material-symbols:code",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "CALL",
+					"hasComment": true,
+					"comment": " Provisionamento igual ao openid (usa uidPrefix e atributo definidor)",
+					"asssignedVariableName": "uid"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 123
+			}
+		},
+		{
+			"id": "finishNode-4795e27f-3981-417c-9e7d-07f1f923f692",
+			"type": "finishNode",
+			"position": {
+				"x": 4780,
+				"y": 100
+			},
+			"data": {
+				"id": "finishNode-4795e27f-3981-417c-9e7d-07f1f923f692",
+				"type": "finishNode",
+				"position": {
+					"x": 4780,
+					"y": 100
+				},
+				"previousNodeId": "callNode-c9db0d42-8c20-47e7-a3cf-8820cd80b279",
+				"agamaData": {
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "END BLOCK",
+					"hasComment": false,
+					"comment": "",
+					"flowfilename": "",
+					"returnVariable": "uid",
+					"finishMode": "withVariable",
+					"nodeIcon": "material-symbols:line-end-square-rounded"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 123
+			}
+		},
+		{
+			"id": "finishNode-71aaf924-0755-49a1-bddd-5295f8daa845",
+			"type": "finishNode",
+			"position": {
+				"x": 4280,
+				"y": -170
+			},
+			"data": {
+				"id": "finishNode-71aaf924-0755-49a1-bddd-5295f8daa845",
+				"type": "finishNode",
+				"position": {
+					"x": 4280,
+					"y": -170
+				},
+				"previousNodeId": "whenNode-12ae0367-d601-4200-b8f4-1d68d3fce633",
+				"branching": "continue",
+				"agamaData": {
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "END BLOCK",
+					"hasComment": false,
+					"comment": "",
+					"flowfilename": "",
+					"returnVariable": "outcome",
+					"finishMode": "withVariable",
+					"nodeIcon": "material-symbols:line-end-square-rounded",
+					"previousNodeId": "whenNode-12ae0367-d601-4200-b8f4-1d68d3fce633"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 123
+			}
+		}
+	],
+	"edges": [
+		{
+			"id": "startNode-f4c31f0e-e950-4320-ae6e-41de8733983a-rrfNode-5d67c272-5673-401e-827c-57717773aa3a",
+			"type": "default",
+			"source": "startNode-f4c31f0e-e950-4320-ae6e-41de8733983a",
+			"target": "rrfNode-5d67c272-5673-401e-827c-57717773aa3a",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": ""
+		},
+		{
+			"id": "rrfNode-5d67c272-5673-401e-827c-57717773aa3a-assignmentNode-12c4e568-63f3-4c90-9ad5-5ac8c1327dc7",
+			"type": "default",
+			"source": "rrfNode-5d67c272-5673-401e-827c-57717773aa3a",
+			"target": "assignmentNode-12c4e568-63f3-4c90-9ad5-5ac8c1327dc7",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": ""
+		},
+		{
+			"id": "assignmentNode-12c4e568-63f3-4c90-9ad5-5ac8c1327dc7-whenNode-7f65e474-1469-4d59-9dba-530a149c1356",
+			"type": "default",
+			"source": "assignmentNode-12c4e568-63f3-4c90-9ad5-5ac8c1327dc7",
+			"target": "whenNode-7f65e474-1469-4d59-9dba-530a149c1356",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": ""
+		},
+		{
+			"id": "whenNode-7f65e474-1469-4d59-9dba-530a149c1356-assignmentNode-58944694-c6a6-4be9-b3d1-2b3d79f77a5b",
+			"type": "default",
+			"source": "whenNode-7f65e474-1469-4d59-9dba-530a149c1356",
+			"target": "assignmentNode-58944694-c6a6-4be9-b3d1-2b3d79f77a5b",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "Condition met",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_whenNode-7f65e474-1469-4d59-9dba-530a149c1356_success"
+		},
+		{
+			"id": "assignmentNode-58944694-c6a6-4be9-b3d1-2b3d79f77a5b-rrfNode-e85f3660-4be5-4867-ba0f-1fae3b8abc5f",
+			"type": "default",
+			"source": "assignmentNode-58944694-c6a6-4be9-b3d1-2b3d79f77a5b",
+			"target": "rrfNode-e85f3660-4be5-4867-ba0f-1fae3b8abc5f",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": ""
+		},
+		{
+			"id": "whenNode-7f65e474-1469-4d59-9dba-530a149c1356-callNode-7b53ead1-071e-45dd-ac6c-18f68c7f41c9",
+			"type": "default",
+			"source": "whenNode-7f65e474-1469-4d59-9dba-530a149c1356",
+			"target": "callNode-7b53ead1-071e-45dd-ac6c-18f68c7f41c9",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "continue",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_whenNode-7f65e474-1469-4d59-9dba-530a149c1356_continue"
+		},
+		{
+			"id": "callNode-7b53ead1-071e-45dd-ac6c-18f68c7f41c9-whenNode-cc2769ba-6603-4988-8ef4-48210235276a",
+			"type": "default",
+			"source": "callNode-7b53ead1-071e-45dd-ac6c-18f68c7f41c9",
+			"target": "whenNode-cc2769ba-6603-4988-8ef4-48210235276a",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": ""
+		},
+		{
+			"id": "whenNode-cc2769ba-6603-4988-8ef4-48210235276a-assignmentNode-c998240e-0c72-49c8-9809-d4fc8ce775f4",
+			"type": "default",
+			"source": "whenNode-cc2769ba-6603-4988-8ef4-48210235276a",
+			"target": "assignmentNode-c998240e-0c72-49c8-9809-d4fc8ce775f4",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "Condition met",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_whenNode-cc2769ba-6603-4988-8ef4-48210235276a_success"
+		},
+		{
+			"id": "assignmentNode-c998240e-0c72-49c8-9809-d4fc8ce775f4-rrfNode-4d6adfbb-8af5-4ca9-9abb-c98c8eab4211",
+			"type": "default",
+			"source": "assignmentNode-c998240e-0c72-49c8-9809-d4fc8ce775f4",
+			"target": "rrfNode-4d6adfbb-8af5-4ca9-9abb-c98c8eab4211",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": ""
+		},
+		{
+			"id": "whenNode-cc2769ba-6603-4988-8ef4-48210235276a-assignmentNode-c44ea3b9-4a2a-416a-aabf-f9a1652ae45b",
+			"type": "default",
+			"source": "whenNode-cc2769ba-6603-4988-8ef4-48210235276a",
+			"target": "assignmentNode-c44ea3b9-4a2a-416a-aabf-f9a1652ae45b",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "continue",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_whenNode-cc2769ba-6603-4988-8ef4-48210235276a_continue"
+		},
+		{
+			"id": "assignmentNode-c44ea3b9-4a2a-416a-aabf-f9a1652ae45b-whenNode-1540c7fb-5599-4274-952c-7f8138ecde68",
+			"type": "default",
+			"source": "assignmentNode-c44ea3b9-4a2a-416a-aabf-f9a1652ae45b",
+			"target": "whenNode-1540c7fb-5599-4274-952c-7f8138ecde68",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": ""
+		},
+		{
+			"id": "whenNode-1540c7fb-5599-4274-952c-7f8138ecde68-callNode-4ec92348-00fb-4a96-8975-f8266e577baa",
+			"type": "default",
+			"source": "whenNode-1540c7fb-5599-4274-952c-7f8138ecde68",
+			"target": "callNode-4ec92348-00fb-4a96-8975-f8266e577baa",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "Condition met",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_whenNode-1540c7fb-5599-4274-952c-7f8138ecde68_success"
+		},
+		{
+			"id": "callNode-4ec92348-00fb-4a96-8975-f8266e577baa-whenNode-d4d423c3-b63d-41b9-84ec-71e8939bed5f",
+			"type": "default",
+			"source": "callNode-4ec92348-00fb-4a96-8975-f8266e577baa",
+			"target": "whenNode-d4d423c3-b63d-41b9-84ec-71e8939bed5f",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": ""
+		},
+		{
+			"id": "whenNode-d4d423c3-b63d-41b9-84ec-71e8939bed5f-assignmentNode-c6f6ba9d-6b69-47e9-a6da-87d3428c71c2",
+			"type": "default",
+			"source": "whenNode-d4d423c3-b63d-41b9-84ec-71e8939bed5f",
+			"target": "assignmentNode-c6f6ba9d-6b69-47e9-a6da-87d3428c71c2",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "Condition met",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_whenNode-d4d423c3-b63d-41b9-84ec-71e8939bed5f_success"
+		},
+		{
+			"id": "whenNode-1540c7fb-5599-4274-952c-7f8138ecde68-whenNode-1a39c244-3f7b-4458-bbca-8ef914625844",
+			"type": "default",
+			"source": "whenNode-1540c7fb-5599-4274-952c-7f8138ecde68",
+			"target": "whenNode-1a39c244-3f7b-4458-bbca-8ef914625844",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "continue",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_whenNode-1540c7fb-5599-4274-952c-7f8138ecde68_continue"
+		},
+		{
+			"id": "whenNode-1a39c244-3f7b-4458-bbca-8ef914625844-assignmentNode-91dc1703-b917-4be8-a248-1544d8df5982",
+			"type": "default",
+			"source": "whenNode-1a39c244-3f7b-4458-bbca-8ef914625844",
+			"target": "assignmentNode-91dc1703-b917-4be8-a248-1544d8df5982",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "Condition met",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_whenNode-1a39c244-3f7b-4458-bbca-8ef914625844_success"
+		},
+		{
+			"id": "whenNode-1a39c244-3f7b-4458-bbca-8ef914625844-whenNode-b4e7a67f-21f1-4b5d-9a03-7d0194d9ec0f",
+			"type": "default",
+			"source": "whenNode-1a39c244-3f7b-4458-bbca-8ef914625844",
+			"target": "whenNode-b4e7a67f-21f1-4b5d-9a03-7d0194d9ec0f",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "continue",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_whenNode-1a39c244-3f7b-4458-bbca-8ef914625844_continue"
+		},
+		{
+			"id": "whenNode-b4e7a67f-21f1-4b5d-9a03-7d0194d9ec0f-assignmentNode-a02e39eb-1333-4ae1-9b11-6e1afbbd7415",
+			"type": "default",
+			"source": "whenNode-b4e7a67f-21f1-4b5d-9a03-7d0194d9ec0f",
+			"target": "assignmentNode-a02e39eb-1333-4ae1-9b11-6e1afbbd7415",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "Condition met",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_whenNode-b4e7a67f-21f1-4b5d-9a03-7d0194d9ec0f_success"
+		},
+		{
+			"id": "whenNode-b4e7a67f-21f1-4b5d-9a03-7d0194d9ec0f-whenNode-93e30395-9482-415e-89c4-7a1a03075400",
+			"type": "default",
+			"source": "whenNode-b4e7a67f-21f1-4b5d-9a03-7d0194d9ec0f",
+			"target": "whenNode-93e30395-9482-415e-89c4-7a1a03075400",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "continue",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_whenNode-b4e7a67f-21f1-4b5d-9a03-7d0194d9ec0f_continue"
+		},
+		{
+			"id": "whenNode-93e30395-9482-415e-89c4-7a1a03075400-assignmentNode-dbbe21bb-1fe7-4f07-84be-7d1592eb3552",
+			"type": "default",
+			"source": "whenNode-93e30395-9482-415e-89c4-7a1a03075400",
+			"target": "assignmentNode-dbbe21bb-1fe7-4f07-84be-7d1592eb3552",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "Condition met",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_whenNode-93e30395-9482-415e-89c4-7a1a03075400_success"
+		},
+		{
+			"id": "assignmentNode-dbbe21bb-1fe7-4f07-84be-7d1592eb3552-rrfNode-906dff35-3323-4941-af0e-ae47d2da7e85",
+			"type": "default",
+			"source": "assignmentNode-dbbe21bb-1fe7-4f07-84be-7d1592eb3552",
+			"target": "rrfNode-906dff35-3323-4941-af0e-ae47d2da7e85",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": ""
+		},
+		{
+			"id": "whenNode-93e30395-9482-415e-89c4-7a1a03075400-logNode-9451b324-72b8-489f-83d3-8c4533f2756b",
+			"type": "default",
+			"source": "whenNode-93e30395-9482-415e-89c4-7a1a03075400",
+			"target": "logNode-9451b324-72b8-489f-83d3-8c4533f2756b",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "continue",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_whenNode-93e30395-9482-415e-89c4-7a1a03075400_continue"
+		},
+		{
+			"id": "logNode-9451b324-72b8-489f-83d3-8c4533f2756b-assignmentNode-378fe34d-2e5e-4bbf-b8f8-a3890d47409d",
+			"type": "default",
+			"source": "logNode-9451b324-72b8-489f-83d3-8c4533f2756b",
+			"target": "assignmentNode-378fe34d-2e5e-4bbf-b8f8-a3890d47409d",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": ""
+		},
+		{
+			"id": "assignmentNode-378fe34d-2e5e-4bbf-b8f8-a3890d47409d-whenNode-b6e3742f-a55e-4289-9414-db476eee63f6",
+			"type": "default",
+			"source": "assignmentNode-378fe34d-2e5e-4bbf-b8f8-a3890d47409d",
+			"target": "whenNode-b6e3742f-a55e-4289-9414-db476eee63f6",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": ""
+		},
+		{
+			"id": "whenNode-b6e3742f-a55e-4289-9414-db476eee63f6-callNode-679677c2-43e9-4cd1-81ec-2e334697f27a",
+			"type": "default",
+			"source": "whenNode-b6e3742f-a55e-4289-9414-db476eee63f6",
+			"target": "callNode-679677c2-43e9-4cd1-81ec-2e334697f27a",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "Condition met",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_whenNode-b6e3742f-a55e-4289-9414-db476eee63f6_success"
+		},
+		{
+			"id": "whenNode-b6e3742f-a55e-4289-9414-db476eee63f6-callNode-4019bebc-1e09-43fd-aea2-ed3986e30e57",
+			"type": "default",
+			"source": "whenNode-b6e3742f-a55e-4289-9414-db476eee63f6",
+			"target": "callNode-4019bebc-1e09-43fd-aea2-ed3986e30e57",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "continue",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_whenNode-b6e3742f-a55e-4289-9414-db476eee63f6_continue"
+		},
+		{
+			"id": "callNode-4019bebc-1e09-43fd-aea2-ed3986e30e57-triggerNode-33fca848-bcc7-4c91-abca-841f7585b54f",
+			"type": "default",
+			"source": "callNode-4019bebc-1e09-43fd-aea2-ed3986e30e57",
+			"target": "triggerNode-33fca848-bcc7-4c91-abca-841f7585b54f",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": ""
+		},
+		{
+			"id": "triggerNode-33fca848-bcc7-4c91-abca-841f7585b54f-whenNode-12ae0367-d601-4200-b8f4-1d68d3fce633",
+			"type": "default",
+			"source": "triggerNode-33fca848-bcc7-4c91-abca-841f7585b54f",
+			"target": "whenNode-12ae0367-d601-4200-b8f4-1d68d3fce633",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": ""
+		},
+		{
+			"id": "whenNode-12ae0367-d601-4200-b8f4-1d68d3fce633-assignmentNode-702f0521-c0c8-4699-9bd2-d0984bb80e0c",
+			"type": "default",
+			"source": "whenNode-12ae0367-d601-4200-b8f4-1d68d3fce633",
+			"target": "assignmentNode-702f0521-c0c8-4699-9bd2-d0984bb80e0c",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "Condition met",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_whenNode-12ae0367-d601-4200-b8f4-1d68d3fce633_success"
+		},
+		{
+			"id": "assignmentNode-702f0521-c0c8-4699-9bd2-d0984bb80e0c-callNode-c9db0d42-8c20-47e7-a3cf-8820cd80b279",
+			"type": "default",
+			"source": "assignmentNode-702f0521-c0c8-4699-9bd2-d0984bb80e0c",
+			"target": "callNode-c9db0d42-8c20-47e7-a3cf-8820cd80b279",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": ""
+		},
+		{
+			"id": "callNode-c9db0d42-8c20-47e7-a3cf-8820cd80b279-finishNode-4795e27f-3981-417c-9e7d-07f1f923f692",
+			"type": "default",
+			"source": "callNode-c9db0d42-8c20-47e7-a3cf-8820cd80b279",
+			"target": "finishNode-4795e27f-3981-417c-9e7d-07f1f923f692",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": ""
+		},
+		{
+			"id": "whenNode-12ae0367-d601-4200-b8f4-1d68d3fce633-finishNode-71aaf924-0755-49a1-bddd-5295f8daa845",
+			"type": "default",
+			"source": "whenNode-12ae0367-d601-4200-b8f4-1d68d3fce633",
+			"target": "finishNode-71aaf924-0755-49a1-bddd-5295f8daa845",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "continue",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_whenNode-12ae0367-d601-4200-b8f4-1d68d3fce633_continue"
+		}
+	],
+	"viewport": {
+		"x": 0,
+		"y": 0,
+		"zoom": 1
+	}
+}
