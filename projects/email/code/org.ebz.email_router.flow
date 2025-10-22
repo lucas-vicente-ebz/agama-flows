@@ -9,11 +9,11 @@ form = RRF "email_form.ftlh"
 email = form.email
 email = email
 When email.length is 0
-     error = Informe seu e-mail.
+     error = "Informe seu e-mail"
      form = RRF "email_form.ftlh" 
 valid = Call "java:org.gluu.agama.util.Regex".matches("[^@\\s]+@[^@\\s]+\\.[^@\\s]+", email) 
 When valid is false
-     error = E-mail inválido.
+     error = "E-mail inválido."
      form = RRF "email_form.ftlh" 
 //  3) Extrai domínio e trata subdomínio (opcional)
 at = email.indexOf("@")
