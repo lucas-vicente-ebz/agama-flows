@@ -1,1 +1,18 @@
-{}
+{
+    "email-domain": {
+        "projectName": "email-domain",
+        "description": "redirect to idp of domain",
+        "type": "community",
+        "author": "lucas-vicente-ebz",
+        "version": "0.0.1",
+        "authorWebsite": "https://github.com/lucas-vicente-ebz/agama-flows",
+        "githubUri": "https://github.com/lucas-vicente-ebz/agama-flows",
+        "license": "apache-2.0",
+        "lastUpdated": "1761164739446",
+        "tags": [
+            "openid-connect"
+        ],
+        "noDirectLaunch": [],
+        "configs": {}
+    }
+}
