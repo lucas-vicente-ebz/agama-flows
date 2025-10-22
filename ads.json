@@ -1,1 +1,18 @@
-{}
+{
+    "email": {
+        "projectName": "email",
+        "description": "email domain",
+        "type": "community",
+        "author": "lucas-vicente-ebz",
+        "version": "0.0.1",
+        "authorWebsite": "https://github.com/lucas-vicente-ebz/agama-flows",
+        "githubUri": "https://github.com/lucas-vicente-ebz/agama-flows",
+        "license": "apache-2.0",
+        "lastUpdated": "1761166884347",
+        "tags": [
+            "openid-connect"
+        ],
+        "noDirectLaunch": [],
+        "configs": {}
+    }
+}
