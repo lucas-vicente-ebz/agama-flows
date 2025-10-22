@@ -1,0 +1,50 @@
+//  Email-first router -> OIDC, sem tela de seleção
+Flow org.ebz.email_router
+     Basepath ""
+     Timeout 300 seconds
+     Configs conf.providers
+//  1) Tela para inserir e-mail
+form = RRF "email_form.ftlh" 
+//  2) Normalização e validação
+email = form.email
+email = email
+When email.length is 0
+     error = Informe seu e-mail.
+     form = RRF "email_form.ftlh" 
+valid = Call "java:org.gluu.agama.util.Regex".matches("[^@\\s]+@[^@\\s]+\\.[^@\\s]+", email) 
+When valid is false
+     error = E-mail inválido.
+     form = RRF "email_form.ftlh" 
+//  3) Extrai domínio e trata subdomínio (opcional)
+at = email.indexOf("@")
+domain = email.substring(at + 1)
+domain = domain.toLowerCase()
+When conf.stripSubdomain is true
+     parts = Call "java:org.gluu.agama.util.Strings".split(domain, "\\.") 
+     When parts.length is 2
+          domain = parts[parts.length - 2] + "." + parts[parts.length - 1]
+          provider = conf.routes[domain]
+//  4) Resolve provider (mapa -> default -> pass-through) e recupera settings
+When provider is null
+     provider = conf.routes["default"]
+When 
+     provider = domain
+     opSettings = conf.providers.$provider
+When opSettings is null
+     error = Não há configuração de provider para \"" + provider + "\".
+     form = RRF "email_form.ftlh" 
+Log "@info Roteando domínio " domain " para provider " provider
+//  5) (Opcional) DCR igual ao openid
+temp = {}
+When 
+     temp = Call org.gluu.inbound.oauth2.DCRUtil#registerClient opSettings.host opSettings.dcr.useCachedClient opSettings.oauth.redirectUri opSettings.oauth.scopes
+//  6) Completa clientId/secret/redirectUri/scopes/acrValues como o openid faz
+opSettings.oauth = Call org.gluu.inbound.oauth2.OAuthParams#update opSettings.oauth temp opSettings.acrValues
+//  7) Dispara o utilitário que faz authz code + userinfo
+outcome = Trigger org.gluu.inbound.oauth2.AuthzCodeWithUserInfo opSettings.oauth
+When outcome.success is true
+     profile = outcome.data.profile
+     //  Provisionamento igual ao openid (usa uidPrefix e atributo definidor)
+     uid = Call org.gluu.inbound.UserOnboardHelper#exec opSettings.provision.uidPrefix opSettings.provision.attribute profile
+     Finish uid
+Finish outcome
