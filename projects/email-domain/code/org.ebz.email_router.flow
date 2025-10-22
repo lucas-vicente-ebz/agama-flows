@@ -1,0 +1,32 @@
+//  Paste your Agama DSL code bellow.
+Flow org.ebz.email_router
+     Basepath ""
+     Timeout 300 seconds
+     Configs conf
+//  Paste your Agama DSL code bellow.
+form = RRF "email_form.htm" 
+email = form.email
+email = email
+When email.length is 0
+     error = Informe seu e-mail.
+     form = RRF "email_form.htm" 
+valid = Call "java:org.gluu.agama.util.Regex".matches("[^@\\s]+@[^@\\s]+\\.[^@\\s]+", email) 
+When valid is false
+     error = E-mail inválido.
+     form = RRF "email_form.htm" 
+//  3) Extrai domínio e trata subdomínio se configurado
+at = email.indexOf("@")
+domain = email.substring(at + 1)
+domain = domain.toLowerCase()
+When conf.stripSubdomain is true
+     //  pega os dois últimos labels (ex.: a.b.c.com -> c.com) se fizer sentido pra você
+     parts = Call "java:org.gluu.agama.util.Strings".split(domain, "\\.") 
+     When parts.length is 2
+          domain = parts[parts.length - 2] + "." + parts[parts.length - 1]
+          provider = conf.routes[domain]
+//  4) Resolve provider pelo mapa; fallback para 'default' ou passThrough
+When provider is null
+     provider = conf.routes["default"]
+Log "@info Roteando domínio %" domain " para provider %" provider
+//  para pular a tela de seleção. Isso depende do NOME DO INPUT que o openid espera para “pré-seleção”.
+Trigger = Trigger __________ 
