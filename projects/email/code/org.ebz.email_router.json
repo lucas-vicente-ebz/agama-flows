@@ -246,8 +246,8 @@
 				"branching": "continue",
 				"agamaData": {
 					"javaClassName": "",
-					"javaMethodName": "email)",
-					"javaVariableName": "\"java:org.gluu.agama.util.Regex\".matches(\"[^@\\\\s]+@[^@\\\\s]+\\\\.[^@\\\\s]+\",",
+					"javaMethodName": "email",
+					"javaVariableName": "\"java:org.gluu.agama.util.Regex\".matches(\"[^@\\\\s]+@[^@\\\\s]+\\\\.[^@\\\\s]+\",email)\"",
 					"exceptionVariableField": "",
 					"callType": "Call method on instance",
 					"arguments": [],
@@ -265,7 +265,8 @@
 			"measured": {
 				"width": 170,
 				"height": 123
-			}
+			},
+			"selected": true
 		},
 		{
 			"id": "whenNode-83c678ac-c5b0-467c-b200-d20d91e7292e",
@@ -346,7 +347,7 @@
 				"width": 170,
 				"height": 123
 			},
-			"selected": true
+			"selected": false
 		},
 		{
 			"id": "rrfNode-b6b8719f-6061-468b-b79c-a21710d35a73",
