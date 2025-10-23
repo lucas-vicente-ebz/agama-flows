@@ -17,7 +17,8 @@
             "org.ebz.email_router": {},
             "code": {},
             "test.test": {},
-            "org.gluu.agama.domain.openid": {}
+            "org.gluu.agama.domain.openid": {},
+            "org.gluu.inbound.oauth2.AuthzCodeWithUserInfo": {}
         },
         "name": "email"
     }
