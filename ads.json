@@ -16,7 +16,8 @@
         "configs": {
             "org.ebz.email_router": {},
             "code": {},
-            "test.test": {}
+            "test.test": {},
+            "org.gluu.agama.domain.openid": {}
         },
         "name": "email"
     }
