@@ -15,7 +15,8 @@
         "noDirectLaunch": [],
         "configs": {
             "org.ebz.email_router": {},
-            "code": {}
+            "code": {},
+            "test.test": {}
         },
         "name": "email"
     }
